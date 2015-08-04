@@ -1,0 +1,23 @@
+{
+  "name": "dotsy",
+  "version": "0.1.0",
+  "description": "dotfiles manager",
+  "main": "dotsy.js",
+  "scripts": {
+    "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/slugbyte/dotsy.git"
+  },
+  "author": "dwolfm@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/slugbyte/dotsy/issues"
+  },
+  "homepage": "https://github.com/slugbyte/dotsy#readme",
+  "dependencies": {
+    "nodegit": "^0.4.1",
+    "promise": "^7.0.4"
+  }
+}
