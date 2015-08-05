@@ -1,18 +1,1 @@
-dir
--- linix
----- home
------- .bashrc
------- .Xresources
------- .xinitrc
------- .vimrc
------- .tmux.conf
------- .conf
------- .conkyrc
------- .gitconfig
---------- awesome
------------ rc.lua
------------ theam.lua
---------- xfce4-terminal 
------------ terminalrc
-
--- mac
+wat
