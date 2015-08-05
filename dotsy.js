@@ -8,7 +8,6 @@ var conf = require('./lib/conf.js');
 
 cc.loadConf(function(err, data){
   if (err) return console.error(err);
-  console.log('dotsyconf\n', data);
   var dotsyConf = data;
 
   if (argv.a || argv.add){
@@ -17,10 +16,19 @@ cc.loadConf(function(err, data){
     if (path == true) {
       console.log('USAGE ERROR: <-a path/to/file> <--add path/to/file>');
     }
-
     conf(path, function(err, confFile){
       if (err) console.log(err);
-      console.log('conf file data', confFile);
+      if (!dotsyConf.platforms[confFile.platform]) {
+        dotsyConf.platforms[confFile.platform] = {};
+      }
+      if (!dotsyConf.platforms[confFile.platform][confFile._id]){
+        dotsyConf.platforms[confFile.platform][confFile._id] = confFile;
+      } else {
+        console.error('ERROR: file allready tracked');
+      }
+        cc.writeConf(dotsyConf, function(err){
+          if (err) console.log(err);
+        });
     });;
   }
 
@@ -40,6 +48,7 @@ cc.loadConf(function(err, data){
   }
 
 
+  console.dir( data, {depth: null});
 
 
 });
