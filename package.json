@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/slugbyte/dotsy#readme",
   "dependencies": {
+    "minimist": "^1.1.2",
     "nodegit": "^0.4.1",
     "promise": "^7.0.4"
   }
