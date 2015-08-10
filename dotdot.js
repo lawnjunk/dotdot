@@ -7,7 +7,7 @@ var conf = require('./lib/conf.js');
 var validate = require('./lib/validate-args.js');
 
 
-var addValidate = function(key, param, callback){
+var addValidate = function(param, callback){
   if (param != true){
     callback()
   } else {
@@ -16,13 +16,13 @@ var addValidate = function(key, param, callback){
 };
 
 
-var validate = {
+var validaters = {
   _: true,
   a: addValidate,
   all: addValidate
 }
 
-validate(argv, function(err){
+validate(argv, validater, function(err){
   if(err) return console.log(err);
 });
 
