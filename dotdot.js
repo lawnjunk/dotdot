@@ -5,14 +5,29 @@ var Promise = require('promise');
 var argv = require('minimist')(process.argv.slice(2)); 
 var conf = require('./lib/conf.js');
 var validate = require('./lib/validate-args.js');
-
+var fs = require('fs');
+var path = require('path');
 
 var addValidate = function(param, callback){
-  if (param != true){
-    callback()
-  } else {
-    callback('fuck');
+  console.log('hit add validate');
+  // get full path
+  // check to see if is file
+  if (param == true){
+    return callback('requires file path');
   }
+  
+  var absPath = path.resolve(param);
+  console.log('absPath', absPath);
+  fs.exists(absPath, function(exists){
+    console.log('exists', exists);
+    if (!exists) return callback('file does not exist');
+    callback();
+  });
+  //if (param != true){
+    //callback()
+  //} else {
+    //callback('fuck');
+  //}
 };
 
 
@@ -22,7 +37,7 @@ var validaters = {
   all: addValidate
 }
 
-validate(argv, validater, function(err){
+validate(argv, validaters, function(err){
   if(err) return console.log(err);
 });
 
